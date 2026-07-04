@@ -1331,8 +1331,10 @@ form.addEventListener("submit", function (e) {
   var body = chat.querySelector(".chat-body");
   var msgs = Array.prototype.slice.call(body.querySelectorAll(".msg"));
   var stamp = chat.querySelector(".chat-stamp");
+  // lock in the full-conversation height so the replay never shifts the page
+  body.style.minHeight = body.offsetHeight + "px";
   msgs.forEach(function (m) { m.classList.add("m-hide"); });
-  stamp.classList.add("m-hide");
+  stamp.style.visibility = "hidden";
 
   var typing = document.createElement("div");
   typing.className = "msg out typing";
@@ -1350,7 +1352,12 @@ form.addEventListener("submit", function (e) {
     var i = 0;
     (function next() {
       if (i >= msgs.length) {
-        setTimeout(function () { stamp.classList.remove("m-hide"); }, 600);
+        setTimeout(function () {
+          stamp.style.animation = "none";
+          void stamp.offsetWidth;
+          stamp.style.animation = "";
+          stamp.style.visibility = "";
+        }, 600);
         return;
       }
       var m = msgs[i++];
@@ -1408,6 +1415,8 @@ form.addEventListener("submit", function (e) {
     var chat = document.getElementById("b-chat");
     var msgs = Array.prototype.slice.call(chat.querySelectorAll(".msg"));
     if (reduced) return; // leave the full thread visible
+    // lock in the full-thread height so the loop never shifts the board
+    chat.style.minHeight = chat.offsetHeight + "px";
     var typing = document.createElement("div");
     typing.className = "msg out typing";
     typing.innerHTML = "<i></i><i></i><i></i>";
