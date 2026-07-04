@@ -286,38 +286,45 @@ h3{font-size:1.15rem;font-weight:700;letter-spacing:-.01em}
 .badge-rows b{color:var(--ink);font-weight:400}
 .badge-rows .ok{color:var(--accent)}
 
-/* ---------- compensation table ---------- */
-.comp-table{
-  width:100%;border-collapse:separate;border-spacing:0;
-  background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;
+/* ---------- compensation: app settings-list card ---------- */
+.vs-card{
+  background:var(--card);border:1px solid var(--line);border-radius:18px;
+  max-width:600px;overflow:hidden;
 }
-.comp-table th,.comp-table td{
-  padding:18px 14px;text-align:left;border-bottom:1px solid var(--line);
-  font-size:.98rem;
+.vs-row{
+  display:grid;grid-template-columns:.9fr 1.1fr 1.1fr;gap:10px;align-items:baseline;
+  padding:15px 20px;border-bottom:1px solid var(--line);font-size:.95rem;
 }
-@media(min-width:640px){.comp-table th,.comp-table td{padding:20px 26px;font-size:1.05rem}}
-.comp-table thead th{
-  font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--ink-mute);font-weight:400;background:var(--bg-2);
+.vs-row:last-child{border-bottom:0}
+.vs-head{
+  font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-mute);background:var(--bg-2);padding:11px 20px;
 }
-.comp-table tbody tr:last-child td{border-bottom:0}
-.comp-table td:first-child{color:var(--ink-dim)}
-.comp-table .col-tommy{background:rgba(10,132,255,.05);border-left:1px solid rgba(10,132,255,.3);font-weight:600}
-.comp-table thead .col-tommy{color:var(--accent)}
-.comp-table .price-hi{
-  color:var(--accent);font-weight:800;font-size:1.35rem;letter-spacing:-.02em;
-}
-.comp-table .price-strike{color:var(--danger);font-weight:600}
+.vs-head span:nth-child(3){color:var(--accent)}
+.vs-row span:first-child{color:var(--ink-mute);font-size:.85rem}
+.vs-row span:nth-child(2){color:var(--ink-dim)}
+.vs-row span:nth-child(3){font-weight:700}
+.vs-price span.strike{color:var(--danger);font-weight:600}
+.vs-price span.hi{color:var(--accent);font-size:1.4rem;font-weight:800;letter-spacing:-.02em}
 
-/* ---------- management ---------- */
-.mgmt-grid{display:grid;gap:14px;margin-bottom:40px}
-@media(min-width:900px){.mgmt-grid{grid-template-columns:repeat(3,1fr)}}
-.mgmt{
-  background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 24px;
+/* ---------- management: notification stack ---------- */
+.notifs{max-width:560px;margin:0 auto 34px}
+.notif{
+  display:flex;gap:13px;align-items:flex-start;
+  background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:14px 16px;margin-bottom:10px;
 }
-.mgmt .m-num{font-family:var(--font-mono);font-size:12px;color:var(--accent);margin-bottom:14px}
-.mgmt h3{margin-bottom:10px}
-.mgmt p{color:var(--ink-dim);font-size:.97rem}
+.notif-icon{
+  width:38px;height:38px;border-radius:10px;flex:none;
+  background:var(--card-2);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+}
+.notif-icon img{width:26px;height:26px;display:block}
+.notif-body{flex:1;min-width:0}
+.notif-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:3px}
+.notif-top b{font-size:.95rem}
+.notif-top time{font-family:var(--font-mono);font-size:10.5px;color:var(--ink-mute);flex:none}
+.notif-body p{color:var(--ink-dim);font-size:.88rem;line-height:1.45}
 
 /* performance review mockup (agently-style panel) */
 .panel{
@@ -367,21 +374,24 @@ h3{font-size:1.15rem;font-weight:700;letter-spacing:-.01em}
 }
 .guarantee .big em{color:var(--accent);font-style:normal}
 
-/* ---------- steps ---------- */
-.steps{display:grid;gap:14px}
-@media(min-width:900px){.steps{grid-template-columns:repeat(3,1fr)}}
-.step{
-  background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 24px;
-  position:relative;
+/* ---------- how hiring works: onboarding stepper ---------- */
+.stepper{list-style:none;max-width:560px}
+.stepper li{display:flex;gap:16px;position:relative;padding-bottom:28px}
+.stepper li:last-child{padding-bottom:0}
+.stepper li::before{
+  content:"";position:absolute;left:15px;top:38px;bottom:6px;width:2px;
+  background:var(--line-hi);border-radius:1px;
 }
-.step .n{
-  font-family:var(--font-mono);font-size:13px;color:#fff;
-  width:30px;height:30px;border-radius:8px;background:var(--accent);
-  display:flex;align-items:center;justify-content:center;font-weight:700;
-  margin-bottom:18px;
+.stepper li:last-child::before{display:none}
+.s-dot{
+  width:32px;height:32px;border-radius:50%;flex:none;position:relative;z-index:1;
+  background:var(--accent);color:#fff;font-weight:700;font-size:14px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 0 4px var(--bg);
 }
-.step h3{margin-bottom:10px}
-.step p{color:var(--ink-dim);font-size:.97rem}
+.s-title{font-weight:700;font-size:1.05rem;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:4px}
+.s-meta{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.stepper p{color:var(--ink-dim);font-size:.93rem;margin-top:4px}
 
 /* ---------- pricing ---------- */
 .price-grid{display:grid;gap:16px;margin-bottom:30px}
@@ -706,38 +716,12 @@ footer .f-data{font-family:var(--font-mono);font-size:11.5px}
     <h2 class="rv">The easiest payroll decision you'll make this&nbsp;year.</h2>
     <p class="sub rv" style="margin-bottom:36px">Same seat. Same job. Very different terms.</p>
 
-    <div class="rv" style="overflow-x:auto">
-      <table class="comp-table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Human BDC rep</th>
-            <th class="col-tommy">Tommy</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Hours covered</td>
-            <td>40 / week</td>
-            <td class="col-tommy">168 / week</td>
-          </tr>
-          <tr>
-            <td>Response time</td>
-            <td>When available</td>
-            <td class="col-tommy">Under 60 seconds</td>
-          </tr>
-          <tr>
-            <td>Sick days</td>
-            <td>Yes</td>
-            <td class="col-tommy">Never</td>
-          </tr>
-          <tr>
-            <td>Monthly cost</td>
-            <td class="price-strike">$3,200+</td>
-            <td class="col-tommy"><span class="price-hi">$997</span></td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="vs-card rv">
+      <div class="vs-row vs-head"><span></span><span>Human BDC rep</span><span>Tommy</span></div>
+      <div class="vs-row"><span>Hours</span><span>40 / week</span><span>168 / week</span></div>
+      <div class="vs-row"><span>Response</span><span>When available</span><span>Under 60s</span></div>
+      <div class="vs-row"><span>Sick days</span><span>Yes</span><span>Never</span></div>
+      <div class="vs-row vs-price"><span>Monthly</span><span class="strike">$3,200+</span><span class="hi">$997</span></div>
     </div>
   </div>
 </section>
@@ -749,21 +733,27 @@ footer .f-data{font-family:var(--font-mono);font-size:11.5px}
     <h2 class="rv">Every employee needs a manager. That's&nbsp;us.</h2>
     <p class="sub rv" style="margin-bottom:36px">You don't manage Tommy. We do. You just read the numbers.</p>
 
-    <div class="mgmt-grid rv">
-      <div class="mgmt">
-        <div class="m-num">01 / training</div>
-        <h3>Training updates</h3>
-        <p>New inventory, new incentives, new hours — Tommy knows within 24 hours. Tell us once, it's handled.</p>
+    <div class="notifs rv">
+      <div class="notif">
+        <div class="notif-icon"><img src="tommy-ghost.png" alt=""></div>
+        <div class="notif-body">
+          <div class="notif-top"><b>Training synced</b><time>within 24h</time></div>
+          <p>New inventory, incentives, hours — tell us once. Tommy knows by tomorrow.</p>
+        </div>
       </div>
-      <div class="mgmt">
-        <div class="m-num">02 / supervision</div>
-        <h3>Supervision</h3>
-        <p>We test every channel weekly. Anything broken is fixed within one business day — or that month is free.</p>
+      <div class="notif">
+        <div class="notif-icon"><img src="tommy-ghost.png" alt=""></div>
+        <div class="notif-body">
+          <div class="notif-top"><b>Weekly check passed</b><time>every week</time></div>
+          <p>We test every channel. Anything broken is fixed in one business day — or that month is free.</p>
+        </div>
       </div>
-      <div class="mgmt">
-        <div class="m-num">03 / review</div>
-        <h3>The monthly performance review</h3>
-        <p>On the 1st you get Tommy's numbers — every lead handled, response times, appointments set, and what it was worth in dollars. One page, no meeting.</p>
+      <div class="notif">
+        <div class="notif-icon"><img src="tommy-ghost.png" alt=""></div>
+        <div class="notif-body">
+          <div class="notif-top"><b>Performance review</b><time>the 1st</time></div>
+          <p>Every lead, response time, appointment, and dollar. One page. No meeting.</p>
+        </div>
       </div>
     </div>
 
@@ -800,23 +790,29 @@ footer .f-data{font-family:var(--font-mono);font-size:11.5px}
   <div class="wrap">
     <div class="eyebrow rv">How hiring works</div>
     <h2 class="rv" style="margin-bottom:36px">Three steps. Two&nbsp;weeks.</h2>
-    <div class="steps rv">
-      <div class="step">
-        <div class="n">1</div>
-        <h3>The interview <span style="color:var(--accent);font-size:.85em">(free, this week)</span></h3>
-        <p>We audit your current lead handling and show you exactly what's slipping through — missed calls, dead internet leads, after-hours silence.</p>
-      </div>
-      <div class="step">
-        <div class="n">2</div>
-        <h3>Onboarding <span style="color:var(--ink-mute);font-size:.85em">(14 days)</span></h3>
-        <p>Tommy learns your store — inventory feed, incentives, service menu, calendar, how you talk to customers.</p>
-      </div>
-      <div class="step">
-        <div class="n">3</div>
-        <h3>Day 15</h3>
-        <p>Tommy clocks in. And never clocks out.</p>
-      </div>
-    </div>
+    <ol class="stepper rv">
+      <li>
+        <span class="s-dot">1</span>
+        <div>
+          <div class="s-title">The interview <span class="s-meta">free · this week</span></div>
+          <p>We audit your lead handling. You see exactly what's slipping through.</p>
+        </div>
+      </li>
+      <li>
+        <span class="s-dot">2</span>
+        <div>
+          <div class="s-title">Onboarding <span class="s-meta">14 days</span></div>
+          <p>Tommy learns your store — inventory, prices, calendar, how you talk.</p>
+        </div>
+      </li>
+      <li>
+        <span class="s-dot">3</span>
+        <div>
+          <div class="s-title">Day 15 <span class="s-meta">on shift</span></div>
+          <p>Tommy clocks in. And never clocks out.</p>
+        </div>
+      </li>
+    </ol>
   </div>
 </section>
 
@@ -1060,7 +1056,7 @@ form.addEventListener("submit", function (e) {
     if (el) sections.push({ id: id, el: el });
   });
 
-  var y = 90, vel = 0, lastScroll = window.scrollY;
+  var x = 0, y = 90, vel = 0, lastScroll = window.scrollY;
   var lastSec = null, bubbleTimer = null, secCheck = 0;
 
   function currentSection() {
@@ -1084,21 +1080,31 @@ form.addEventListener("submit", function (e) {
     var on = heroMark.getBoundingClientRect().bottom < 0;
     wrap.classList.toggle("on", on);
 
-    // drift lower down the viewport as you get deeper into the page
+    // roam the whole viewport on slow lissajous curves; drift lower as you
+    // get deeper into the page. While speaking, swim back to the right edge
+    // so the bubble always fits on screen.
     var doc = document.documentElement;
     var prog = Math.min(1, window.scrollY / (doc.scrollHeight - window.innerHeight));
-    var targetY = 84 + prog * (window.innerHeight * 0.62);
+    var maxX = Math.max(0, window.innerWidth - 92);
+    var talking = bubble.classList.contains("show");
 
-    // smooth follow + scroll-velocity tilt + idle bob
+    var wander = (0.5 + 0.5 * Math.sin(t / 5300 + 1.2)) * maxX;
+    var targetX = (reduced || talking) ? -maxX * 0.04 : -wander;
+    var targetY = 84 + prog * (window.innerHeight * 0.4)
+                + (reduced ? 0 : (0.5 + 0.5 * Math.sin(t / 4100)) * window.innerHeight * 0.3);
+
+    // smooth follow + travel lean + scroll-velocity tilt + idle bob
     vel += ((window.scrollY - lastScroll) - vel) * 0.12;
     lastScroll = window.scrollY;
-    y += (targetY - y) * 0.06;
+    var px = x;
+    x += (targetX - x) * (talking ? 0.07 : 0.025);
+    y += (targetY - y) * 0.05;
 
     var bob  = reduced ? 0 : Math.sin(t / 750) * 7;
-    var sway = reduced ? 0 : Math.sin(t / 1300) * 4;
-    var tilt = reduced ? 0 : Math.sin(t / 950) * 7 + Math.max(-18, Math.min(18, vel * 0.4));
+    var lean = Math.max(-14, Math.min(14, (x - px) * 6));
+    var tilt = reduced ? 0 : Math.sin(t / 950) * 7 + lean + Math.max(-14, Math.min(14, vel * 0.35));
 
-    wrap.style.transform = "translate3d(" + sway + "px," + (y + bob) + "px,0)";
+    wrap.style.transform = "translate3d(" + x + "px," + (y + bob) + "px,0)";
     ghost.style.transform = "rotate(" + tilt + "deg)";
 
     // section chat (checked ~5x/sec, not every frame)
