@@ -140,16 +140,6 @@ h3{font-size:1.15rem;font-weight:700;letter-spacing:-.01em}
   margin-bottom:26px;
 }
 .hero-sub strong{color:var(--ink);font-weight:700}
-.hero-channels{
-  color:var(--ink-dim);
-  font-size:clamp(1.25rem,3.4vw,1.85rem);
-  font-weight:600;
-  line-height:1.65;
-  max-width:860px;
-  letter-spacing:-.015em;
-  margin-bottom:44px;
-}
-.hero-channels b{color:var(--ink);font-weight:700}
 .chip{
   display:inline-flex;vertical-align:-.18em;
   width:1.25em;height:1.25em;border-radius:.3em;
@@ -157,27 +147,10 @@ h3{font-size:1.15rem;font-weight:700;letter-spacing:-.01em}
   overflow:hidden;flex:none;
 }
 .chip svg{width:100%;height:100%}
-.hero-ctas{display:flex;flex-direction:column;gap:22px;max-width:640px}
-@media(min-width:640px){.hero-ctas .btn{align-self:flex-start}}
-
-/* the demo challenge box */
-.challenge{
-  border:1px solid var(--accent);
-  border-radius:16px;
-  background:linear-gradient(180deg,rgba(10,132,255,.08),rgba(10,132,255,.02));
-  box-shadow:0 0 44px rgba(10,132,255,.12);
-  padding:24px 24px 22px;
-}
-.challenge .tag{
-  font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:10px;
-}
-.challenge p{font-size:1.08rem;font-weight:600;line-height:1.5}
-.challenge a.phone{
+a.phone{
   color:var(--accent-hi);font-weight:800;white-space:nowrap;
   border-bottom:2px solid var(--accent);
 }
-.challenge .fine{font-size:.98rem;color:var(--ink-dim);font-weight:500;margin-top:6px}
 
 /* ---------- connector marquee ---------- */
 .marquee-sec{padding:0 0 72px}
@@ -269,34 +242,6 @@ h3{font-size:1.15rem;font-weight:700;letter-spacing:-.01em}
   background:rgba(10,132,255,.1);border:1px solid rgba(10,132,255,.25);
   border-radius:999px;padding:6px 12px;
 }
-.try-cta{text-align:center}
-
-/* ---------- references ---------- */
-.refs{display:grid;gap:14px}
-@media(min-width:820px){.refs{grid-template-columns:repeat(3,1fr)}}
-.ref{
-  background:var(--card);border:1px solid var(--line);border-radius:16px;
-  padding:24px;display:flex;flex-direction:column;
-}
-.ref .stars{color:var(--accent);letter-spacing:3px;font-size:.85rem;margin-bottom:14px}
-.ref blockquote{font-size:.96rem;font-weight:500;line-height:1.55;flex:1;margin-bottom:18px}
-.ref .who{font-family:var(--font-mono);font-size:11px;color:var(--ink-mute);line-height:1.7}
-.ref .result{color:var(--accent);font-weight:800;font-size:1.02rem;margin-top:8px;letter-spacing:-.01em}
-.refs-note{font-family:var(--font-mono);font-size:10.5px;color:var(--ink-mute);text-align:center;margin-top:16px}
-
-/* ---------- stat cards ---------- */
-.stats{display:grid;gap:14px;margin-bottom:28px}
-@media(min-width:768px){.stats{grid-template-columns:repeat(3,1fr)}}
-.stat{
-  background:var(--card);border:1px solid var(--line);border-radius:16px;
-  padding:28px 24px;
-}
-.stat .num{
-  font-size:clamp(2.6rem,7vw,3.4rem);font-weight:800;letter-spacing:-.04em;
-  color:var(--accent);line-height:1;margin-bottom:12px;
-}
-.stat p{color:var(--ink-dim);font-size:.98rem}
-.stat .src{font-family:var(--font-mono);font-size:11px;color:var(--ink-mute);margin-top:12px}
 .kicker{
   font-size:clamp(1.15rem,3vw,1.45rem);font-weight:700;letter-spacing:-.015em;
 }
@@ -502,25 +447,6 @@ h3{font-size:1.15rem;font-weight:700;letter-spacing:-.01em}
   .b-bar i{width:86%}.b-bars i{height:var(--h)}.ring-fg{stroke-dashoffset:38.4}
 }
 
-/* ---------- how hiring works: onboarding stepper ---------- */
-.stepper{list-style:none;max-width:560px}
-.stepper li{display:flex;gap:16px;position:relative;padding-bottom:28px}
-.stepper li:last-child{padding-bottom:0}
-.stepper li::before{
-  content:"";position:absolute;left:15px;top:38px;bottom:6px;width:2px;
-  background:var(--line-hi);border-radius:1px;
-}
-.stepper li:last-child::before{display:none}
-.s-dot{
-  width:32px;height:32px;border-radius:50%;flex:none;position:relative;z-index:1;
-  background:var(--accent);color:#fff;font-weight:700;font-size:14px;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 0 0 4px var(--bg);
-}
-.s-title{font-weight:700;font-size:1.05rem;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:4px}
-.s-meta{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
-.stepper p{color:var(--ink-dim);font-size:.93rem;margin-top:4px}
-
 /* ---------- pricing ---------- */
 .price-grid{display:grid;gap:16px;margin-bottom:30px}
 @media(min-width:820px){.price-grid{grid-template-columns:1fr 1fr}}
@@ -582,6 +508,10 @@ h3{font-size:1.15rem;font-weight:700;letter-spacing:-.01em}
 .final h2{max-width:760px;margin:0 auto 18px}
 .final .sub{margin:0 auto 36px}
 .cta-row{display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:52px}
+.steps-line{
+  font-family:var(--font-mono);font-size:11.5px;letter-spacing:.04em;
+  color:var(--ink-mute);margin:-16px auto 34px;max-width:640px;
+}
 .cta-row .btn-ghost{background:var(--card);border:0}
 .cta-row .btn svg{flex:none}
 .form-card{
@@ -679,37 +609,14 @@ footer .f-data{font-family:var(--font-mono);font-size:11.5px}
     <img class="ghost-mark hero-mark" src="tommy-ghost.png" alt="Tommy" width="76" height="76">
     <h1>Meet Tommy, your new AI&nbsp;agent. He never&nbsp;misses.</h1>
 
-    <p class="hero-sub">A call, Facebook message, website chat, Instagram DM — or the <strong>11 other places</strong> leads come in from. All answered, <strong>24/7</strong>.</p>
+    <p class="hero-sub">A call, Facebook message, website chat, Instagram DM — or the <strong>11 other places</strong> leads come in from. All answered in <strong>under 60 seconds</strong>, <strong>24/7</strong>.</p>
 
-    <p class="hero-channels">Tommy works the channels your customers already use —
-      <span class="chip"><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="5.5" fill="#3ddc55"/><path fill="#fff" d="M12 5.2c-3.9 0-7 2.6-7 5.8 0 1.8 1 3.4 2.5 4.5-.1.8-.5 1.9-1.2 2.6 1.3-.2 2.5-.8 3.2-1.4.8.2 1.6.4 2.5.4 3.9 0 7-2.6 7-5.9s-3.1-6-7-6z"/></svg></span><b>iMessage</b>,
-      <span class="chip"><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="5.5" fill="#25d366"/><path fill="#fff" d="M12 4.6c-4 0-7.3 3.2-7.3 7.2 0 1.3.3 2.5 1 3.6l-1 3.8 3.9-1c1 .6 2.2.9 3.4.9 4 0 7.3-3.2 7.3-7.2S16 4.6 12 4.6zm3.9 10.1c-.2.5-1 .9-1.4 1-.4 0-.8.2-2.7-.6-2.3-1-3.7-3.3-3.8-3.5-.1-.1-.9-1.2-.9-2.3 0-1.1.6-1.6.8-1.9.2-.2.4-.3.6-.3h.4c.1 0 .3 0 .5.4l.7 1.7c.1.1.1.3 0 .4l-.3.4-.4.4c-.1.1-.2.3-.1.5.1.2.6 1 1.3 1.6.9.8 1.7 1.1 1.9 1.2.2.1.4.1.5-.1l.6-.7c.2-.2.3-.2.5-.1l1.6.8c.2.1.4.2.4.3.1.1.1.4-.2.8z"/></svg></span><b>WhatsApp</b>,
-      <span class="chip"><svg viewBox="0 0 24 24"><defs><radialGradient id="ig" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#fdf497"/><stop offset="5%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs><rect width="24" height="24" rx="5.5" fill="url(#ig)"/><rect x="6" y="6" width="12" height="12" rx="3.6" fill="none" stroke="#fff" stroke-width="1.6"/><circle cx="12" cy="12" r="2.9" fill="none" stroke="#fff" stroke-width="1.6"/><circle cx="15.7" cy="8.3" r="1" fill="#fff"/></svg></span><b>Instagram</b>,
-      <span class="chip"><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="5.5" fill="#1877f2"/><path fill="#fff" d="M13.4 20v-6.2h2.1l.3-2.4h-2.4V9.9c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.8v2.4h2.1V20h2.5z"/></svg></span><b>Facebook</b>,
-      <span class="chip"><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="5.5" fill="#010101"/><path fill="#25f4ee" d="M9.9 10.4v3.9a2.1 2.1 0 1 0 1.5 2V4.9h2.1a4.3 4.3 0 0 0 3.5 3.5v2.1a6.3 6.3 0 0 1-3.5-1.2v4.9a4.2 4.2 0 1 1-3.6-3.8z" transform="translate(-.4 -.2)"/><path fill="#fe2c55" d="M10.7 10.6v3.9a2.1 2.1 0 1 0 1.5 2V5.1h2.1a4.3 4.3 0 0 0 3.5 3.5v2.1a6.3 6.3 0 0 1-3.5-1.2v4.9a4.2 4.2 0 1 1-3.6-3.8z" transform="translate(.4 .2)"/><path fill="#fff" d="M10.3 10.5v3.9a2.1 2.1 0 1 0 1.5 2V5h2.1a4.3 4.3 0 0 0 3.5 3.5v2.1a6.3 6.3 0 0 1-3.5-1.2v4.9a4.2 4.2 0 1 1-3.6-3.8z"/></svg></span><b>TikTok</b>,
-      your <b>phone line</b>, and your <b>website chat</b> — chases every lead from
-      <span class="chip"><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="5.5" fill="#e94f1d"/><path fill="#fff" d="M12 5.2 6 18h2.7l1.2-2.7h4.2l1.2 2.7H18L12 5.2zm-1.2 8 1.2-2.9 1.2 2.9h-2.4z"/></svg></span><b>AutoTrader</b>,
-      <span class="chip"><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="5.5" fill="#5c2e91"/><path fill="#fff" d="M14.8 15.1a3.4 3.4 0 1 1 0-6.1l1.5-2a5.9 5.9 0 1 0 0 10.1l-1.5-2z"/></svg></span><b>Cars.com</b>,
-      <span class="chip"><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="5.5" fill="#0989cb"/><path fill="#fff" d="M15.4 13.6a3.5 3.5 0 1 1-.1-3.4l2.2-1.1A6 6 0 1 0 18 12h-4.4v1.6h1.8z"/></svg></span><b>CarGurus</b>, and
-      <span class="chip"><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="5.5" fill="#1877f2"/><path fill="#fff" d="M13.4 20v-6.2h2.1l.3-2.4h-2.4V9.9c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.8v2.4h2.1V20h2.5z"/></svg></span><b>Facebook&nbsp;Marketplace</b> —
-      and books straight into the tools your store already runs:
-      <span class="chip"><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="5.5" fill="#e01933"/><text x="12" y="16" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="#fff" text-anchor="middle">CDK</text></svg></span><b>CDK</b>,
-      <span class="chip"><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="5.5" fill="#c8102e"/><path fill="#fff" d="m6 6.5 4.3 11h3.4L18 6.5h-2.9L12 15.2 8.9 6.5H6z"/></svg></span><b>VinSolutions</b>,
-      <span class="chip"><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="5.5" fill="#0074bc"/><text x="12" y="16.2" font-family="Arial,sans-serif" font-size="9" font-weight="bold" fill="#fff" text-anchor="middle">DS</text></svg></span><b>DealerSocket</b>,
-      <span class="chip"><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="5.5" fill="#12284c"/><text x="12" y="16.2" font-family="Arial,sans-serif" font-size="9" font-weight="bold" fill="#fff" text-anchor="middle">dt</text></svg></span><b>Dealertrack</b>, and
-      <span class="chip"><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="5.5" fill="#fff"/><rect x="5" y="6" width="14" height="3.5" fill="#1a73e8"/><rect x="5" y="6" width="14" height="13" rx="2" fill="none" stroke="#dadce0"/><text x="12" y="16.6" font-family="Arial,sans-serif" font-size="7.5" font-weight="bold" fill="#1a73e8" text-anchor="middle">31</text></svg></span><b>Google&nbsp;Calendar</b>.
-    </p>
-
-    <div class="hero-ctas">
+    <div class="cta-row" style="justify-content:flex-start">
       <a href="#interview" class="btn btn-primary" data-track="cta_hero">Interview Tommy — free</a>
-
-      <div class="challenge">
-        <div class="tag">The two-ring test</div>
-        <p>Don't take our word for it. Call Tommy right now:
-          <a class="phone" href="tel:[DEMO_PHONE_NUMBER]" data-track="demo_call_hero">[DEMO_PHONE_NUMBER]</a>
-        </p>
-        <p class="fine">Hang up after two rings. Watch your phone.</p>
-      </div>
+      <a href="tel:[DEMO_PHONE_NUMBER]" class="btn btn-ghost" data-track="demo_call_hero">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9.4 5.6c.4-.2.9 0 1.1.4l1 2.2c.2.4.1.8-.2 1.1l-1 1c.6 1.2 1.5 2.2 2.7 2.8l1-1c.3-.3.7-.4 1.1-.2l2.2 1c.4.2.6.7.4 1.1l-.7 1.7c-.2.5-.7.8-1.2.7-4.6-.6-8.2-4.2-8.8-8.8-.1-.5.2-1 .7-1.2l1.7-.8z" fill="currentColor"/></svg>
+        <span>Text or call Tommy: <span class="phone-num" style="color:var(--accent-hi)">[DEMO_PHONE_NUMBER]</span></span>
+      </a>
     </div>
   </div>
 </header>
@@ -759,6 +666,41 @@ footer .f-data{font-family:var(--font-mono);font-size:11.5px}
   </div>
 </div>
 
+<!-- ============ THE PROBLEM: last night, shown ============ -->
+<section id="problem" style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow rv">The problem</div>
+    <h2 class="rv">Last night, while your store was&nbsp;closed.</h2>
+    <p class="sub rv" style="margin-bottom:36px">62% of calls to dealerships ring out. After hours, it's nearly all of them. Here's what last night looks like with Tommy on&nbsp;shift.</p>
+
+    <div class="notifs rv">
+      <div class="notif">
+        <div class="notif-icon"><span class="chip"><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="5.5" fill="#0a84ff"/><path fill="#fff" d="M9.4 5.6c.4-.2.9 0 1.1.4l1 2.2c.2.4.1.8-.2 1.1l-1 1c.6 1.2 1.5 2.2 2.7 2.8l1-1c.3-.3.7-.4 1.1-.2l2.2 1c.4.2.6.7.4 1.1l-.7 1.7c-.2.5-.7.8-1.2.7-4.6-.6-8.2-4.2-8.8-8.8-.1-.5.2-1 .7-1.2l1.7-.8z"/></svg></span></div>
+        <div class="notif-body">
+          <div class="notif-top"><b>Missed call — no voicemail</b><time>9:41 PM</time></div>
+          <p>Tommy texted back in 9 seconds. Test drive booked for Tuesday 5:30.</p>
+        </div>
+      </div>
+      <div class="notif">
+        <div class="notif-icon"><span class="chip"><svg viewBox="0 0 24 24"><defs><radialGradient id="ig4" cx="30%" cy="107%" r="150%"><stop offset="5%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs><rect width="24" height="24" rx="5.5" fill="url(#ig4)"/><rect x="6" y="6" width="12" height="12" rx="3.6" fill="none" stroke="#fff" stroke-width="1.6"/><circle cx="12" cy="12" r="2.9" fill="none" stroke="#fff" stroke-width="1.6"/><circle cx="15.7" cy="8.3" r="1" fill="#fff"/></svg></span></div>
+        <div class="notif-body">
+          <div class="notif-top"><b>Instagram DM — "what's my trade worth?"</b><time>11:03 PM</time></div>
+          <p>Qualified in four messages. Appraisal booked for Saturday morning.</p>
+        </div>
+      </div>
+      <div class="notif">
+        <div class="notif-icon"><span class="chip"><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="5.5" fill="#1877f2"/><path fill="#fff" d="M13.4 20v-6.2h2.1l.3-2.4h-2.4V9.9c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.8v2.4h2.1V20h2.5z"/></svg></span></div>
+        <div class="notif-body">
+          <div class="notif-top"><b>Marketplace — "is the F-150 still available?"</b><time>1:22 AM</time></div>
+          <p>Answered in 8 seconds. He's coming Saturday at 11.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="kicker rv" style="text-align:center">Your leads aren't going cold. <em>They're going to whoever answers.</em></p>
+  </div>
+</section>
+
 <!-- ============ THE AUDITION: chat demo + try-it scripts ============ -->
 <section id="watch" style="padding-top:0">
   <div class="wrap">
@@ -784,7 +726,7 @@ footer .f-data{font-family:var(--font-mono);font-size:11.5px}
       <div class="chat-stamp">test drive booked · 41 seconds after the first text</div>
     </div>
 
-    <p class="kicker rv" style="text-align:center;margin-bottom:26px">Now put Tommy through his paces. <em>Text the demo line:</em></p>
+    <p class="kicker rv" style="text-align:center;margin-bottom:26px">Now put Tommy through his paces. <em>Text the demo line: <a class="phone" href="tel:[DEMO_PHONE_NUMBER]" data-track="demo_call_audition">[DEMO_PHONE_NUMBER]</a></em></p>
 
     <div class="try-grid rv">
       <div class="try">
@@ -819,50 +761,10 @@ footer .f-data{font-family:var(--font-mono);font-size:11.5px}
       </div>
     </div>
 
-    <div class="try-cta rv">
-      <div class="challenge" style="max-width:560px;margin:0 auto;text-align:left">
-        <div class="tag">The audition line</div>
-        <p>Text or call Tommy right now:
-          <a class="phone" href="tel:[DEMO_PHONE_NUMBER]" data-track="demo_call_audition">[DEMO_PHONE_NUMBER]</a>
-        </p>
-        <p class="fine">Try all three. He doesn't know you're testing him. He never does.</p>
-      </div>
-    </div>
   </div>
 </section>
 
-<!-- ============ 2. THE PROBLEM ============ -->
-<section id="problem">
-  <div class="wrap">
-    <div class="eyebrow rv">The problem</div>
-    <h2 class="rv">The phone rings. Nobody's&nbsp;there.</h2>
-    <div class="stats rv">
-      <div class="stat">
-        <div class="num">62%</div>
-        <p>of calls to small businesses go unanswered.</p>
-        <div class="src">source: 411 Locals study</div>
-      </div>
-      <div class="stat">
-        <div class="num">~21x</div>
-        <p>more likely to qualify a lead when you respond in 5 minutes instead of 30.</p>
-        <div class="src">source: MIT / InsideSales lead response study</div>
-      </div>
-      <div class="stat">
-        <!-- [AFTER_HOURS_STAT]: swap 41% for the prospect's own audit number when known -->
-        <div class="num" id="after-hours-stat">41%</div>
-        <p>of inbound contacts arrive after hours.</p>
-        <div class="src">source: industry after-hours contact data</div>
-      </div>
-      <div class="stat" style="grid-column:1/-1">
-        <h3 style="margin-bottom:10px">"Unknown Caller" isn't a business strategy.</h3>
-        <p>Your reps text leads from their personal cells. Customers save <em style="font-style:normal;color:var(--ink)">their</em> numbers — and the day a rep quits, the relationship walks out the door with them. Tommy works one number that shows your dealership's name on every phone. Every conversation stays with the store. Forever.</p>
-      </div>
-    </div>
-    <p class="kicker rv">Your leads aren't going cold. <em>They're going to whoever answers.</em></p>
-  </div>
-</section>
-
-<!-- ============ 3. THE CANDIDATE ============ -->
+<!-- ============ THE CANDIDATE ============ -->
 <section id="candidate" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="wrap">
     <div class="eyebrow rv">The candidate</div>
@@ -898,13 +800,11 @@ footer .f-data{font-family:var(--font-mono);font-size:11.5px}
 
       <div class="sec-label">Responsibilities</div>
       <ul>
-        <li>Answers 100% of calls, DMs, and internet leads in under 60 seconds</li>
-        <li>Texts back every missed call in seconds</li>
+        <li>Answers 100% of calls, texts, DMs, and internet leads in under 60 seconds</li>
         <li>Qualifies every lead — buyer, service, or trade-in</li>
         <li>Books test drives and service appointments straight into your calendar</li>
         <li>Answers inventory, pricing, and availability questions from your actual stock list — never a guess</li>
         <li>Texts waiting customers the moment a matching vehicle lands on the lot</li>
-        <li>Asks every happy customer for a Google review — one tap, on autopilot</li>
         <li>Works every night, weekend, and holiday</li>
       </ul>
 
@@ -924,30 +824,6 @@ footer .f-data{font-family:var(--font-mono);font-size:11.5px}
     <div class="eyebrow rv">Management</div>
     <h2 class="rv">Every employee needs a manager. That's&nbsp;us.</h2>
     <p class="sub rv" style="margin-bottom:36px">You don't manage Tommy. We do. You just read the numbers.</p>
-
-    <div class="notifs rv">
-      <div class="notif">
-        <div class="notif-icon"><img src="tommy-ghost.png" alt=""></div>
-        <div class="notif-body">
-          <div class="notif-top"><b>Training synced</b><time>within 24h</time></div>
-          <p>New inventory, incentives, hours — tell us once. Tommy knows by tomorrow.</p>
-        </div>
-      </div>
-      <div class="notif">
-        <div class="notif-icon"><img src="tommy-ghost.png" alt=""></div>
-        <div class="notif-body">
-          <div class="notif-top"><b>Weekly check passed</b><time>every week</time></div>
-          <p>We test every channel. Anything broken is fixed in one business day — or that month is free.</p>
-        </div>
-      </div>
-      <div class="notif">
-        <div class="notif-icon"><img src="tommy-ghost.png" alt=""></div>
-        <div class="notif-body">
-          <div class="notif-top"><b>Performance review</b><time>the 1st</time></div>
-          <p>Every lead, response time, appointment, and dollar. One page. No meeting.</p>
-        </div>
-      </div>
-    </div>
 
     <!-- live board: everything on it moves -->
     <div class="board rv" id="live-board">
@@ -1035,69 +911,12 @@ footer .f-data{font-family:var(--font-mono);font-size:11.5px}
         </div>
 
       </div>
+      <div class="panel-foot">trained on changes within 24h · every channel tested weekly · your report lands the 1st — or that month is free</div>
     </div>
   </div>
 </section>
 
-<!-- ============ REFERENCES ============ -->
-<section id="references">
-  <div class="wrap">
-    <div class="eyebrow rv">References</div>
-    <h2 class="rv" style="margin-bottom:36px">We called Tommy's last employers.</h2>
-    <div class="refs rv">
-      <div class="ref">
-        <div class="stars">★★★★★</div>
-        <blockquote>"Weekend leads used to die by Monday. Now they show up already booked. Paid for itself the first month."</blockquote>
-        <div class="who">GM · IMPORT STORE<div class="result">+41% appointments in 90 days</div></div>
-      </div>
-      <div class="ref">
-        <div class="stars">★★★★★</div>
-        <blockquote>"My BDC stopped drowning in cold follow-up. Tommy hands my closers people who are ready to buy."</blockquote>
-        <div class="who">BDC MANAGER · DEALER GROUP<div class="result">38s median first reply</div></div>
-      </div>
-      <div class="ref">
-        <div class="stars">★★★★★</div>
-        <blockquote>"The 'your truck just landed' texts pulled 11 deals out of a dead database in three weeks."</blockquote>
-        <div class="who">DEALER PRINCIPAL · TRUCK STORE<div class="result">11 deals · 3 weeks</div></div>
-      </div>
-    </div>
-    <!-- Placeholder quotes for layout — swap in real testimonials before launch -->
-    <div class="refs-note">illustrative placeholders — swap in your real numbers before launch</div>
-  </div>
-</section>
-
-<!-- ============ 7. HOW HIRING WORKS ============ -->
-<section id="how" style="padding-top:0">
-  <div class="wrap">
-    <div class="eyebrow rv">How hiring works</div>
-    <h2 class="rv" style="margin-bottom:36px">Three steps. Two&nbsp;weeks.</h2>
-    <ol class="stepper rv">
-      <li>
-        <span class="s-dot">1</span>
-        <div>
-          <div class="s-title">The interview <span class="s-meta">free · this week</span></div>
-          <p>We audit your lead handling. You see exactly what's slipping through.</p>
-        </div>
-      </li>
-      <li>
-        <span class="s-dot">2</span>
-        <div>
-          <div class="s-title">Onboarding <span class="s-meta">14 days</span></div>
-          <p>Tommy learns your store — inventory, prices, calendar, how you talk.</p>
-        </div>
-      </li>
-      <li>
-        <span class="s-dot">3</span>
-        <div>
-          <div class="s-title">Day 15 <span class="s-meta">on shift</span></div>
-          <p>Tommy clocks in. And never clocks out.</p>
-        </div>
-      </li>
-    </ol>
-  </div>
-</section>
-
-<!-- ============ 8. PRICING ============ -->
+<!-- ============ PRICING ============ -->
 <section id="pricing" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="wrap">
     <div class="eyebrow rv">Compensation package</div>
@@ -1157,14 +976,6 @@ footer .f-data{font-family:var(--font-mono);font-size:11.5px}
         <div class="a">Tommy says so, and hands the conversation to your team immediately — with the full transcript attached so you're not starting from zero. Tommy never guesses at a payment, a trade-in number, or a policy. You'd fire a BDC rep who winged it. So would we.</div>
       </details>
       <details>
-        <summary>Will customers know it's not human?</summary>
-        <div class="a">If they ask, Tommy tells them the truth: it's a virtual assistant. We don't pretend, and we don't need to — car buyers care about getting an answer in 60 seconds at 11pm, not who typed it. Most just say thanks and book the test drive.</div>
-      </details>
-      <details>
-        <summary>What do you need from me to get started?</summary>
-        <div class="a">About an hour, total. Your inventory feed, your service menu, your hours, your calendar access, and how you like to talk to customers. We handle the rest during the 14-day onboarding — you keep running your store.</div>
-      </details>
-      <details>
         <summary>Is this compliant? STOP opt-outs, quiet hours?</summary>
         <div class="a">Yes, out of the box. The sender ID identifies your dealership, every customer can reply STOP to opt out instantly, and Tommy respects quiet hours and consent windows. We handle carrier registration and keep an auditable log of every message and consent.</div>
       </details>
@@ -1185,6 +996,8 @@ footer .f-data{font-family:var(--font-mono);font-size:11.5px}
   <div class="wrap">
     <h2 class="rv">Stop losing deals to slow follow-up.</h2>
     <p class="sub rv">Fifteen minutes on Zoom. We show you what's slipping through — and you watch Tommy catch it live. Or test him yourself right now.</p>
+
+    <p class="steps-line rv">① 15-min call &nbsp;→&nbsp; ② 14-day onboarding &nbsp;→&nbsp; ③ day 15: Tommy clocks in — and never clocks out</p>
 
     <div class="cta-row rv">
       <a href="#book" class="btn btn-primary" data-track="cta_final_book">Book my call →</a>
@@ -1455,12 +1268,10 @@ form.addEventListener("submit", function (e) {
 
   // what Tommy says as you pass each section
   var LINES = {
-    watch:        "That's me working. Go on — text the line yourself.",
     problem:      "62% of calls just ring out. Not on my shift.",
-    references:   "References check out. They'll pick up if you call.",
+    watch:        "That's me working. Go on — text the line yourself.",
     candidate:    "That's my file. Read it — I don't mind.",
     management:   "My manager checks my work every week. Really.",
-    how:          "I could start learning your store this week.",
     pricing:      "Less than $33 a day. No lunch breaks either.",
     faq:          "Yes, I'm real AI. Go ahead — call me.",
     interview:    "Fill that out. I'll text you in 60 seconds. Timed."
