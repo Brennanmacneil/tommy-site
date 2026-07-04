@@ -481,6 +481,38 @@ footer .f-brand{font-weight:800;color:var(--ink);font-size:1.02rem;margin-bottom
 footer .f-tag{color:var(--ink-dim);margin-bottom:18px}
 footer .f-data{font-family:var(--font-mono);font-size:11.5px}
 
+/* ---------- floating Tommy ---------- */
+#tommy-float{
+  position:fixed;top:0;right:16px;z-index:40;
+  pointer-events:none;opacity:0;visibility:hidden;
+  transition:opacity .5s ease,visibility .5s ease;
+  will-change:transform;
+}
+#tommy-float.on{opacity:1;visibility:visible}
+#tommy-float img{
+  width:56px;height:56px;display:block;
+  filter:drop-shadow(0 8px 22px rgba(10,132,255,.4));
+  will-change:transform;
+}
+.t-bubble{
+  position:absolute;right:66px;top:50%;
+  transform:translateY(-50%) scale(.85);
+  transform-origin:right center;
+  background:var(--card-2);border:1px solid var(--line-hi);
+  color:var(--ink);border-radius:14px;border-bottom-right-radius:4px;
+  padding:10px 14px;font-size:.86rem;font-weight:600;line-height:1.45;
+  width:max-content;max-width:216px;
+  opacity:0;transition:opacity .35s ease,transform .35s ease;
+  box-shadow:0 12px 34px rgba(0,0,0,.55);
+}
+.t-bubble::after{
+  content:"";position:absolute;right:-6px;bottom:10px;
+  width:10px;height:10px;background:var(--card-2);
+  border-right:1px solid var(--line-hi);border-top:1px solid var(--line-hi);
+  transform:rotate(45deg);
+}
+.t-bubble.show{opacity:1;transform:translateY(-50%) scale(1)}
+
 /* ---------- scroll reveal ---------- */
 .rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
 .rv.in{opacity:1;transform:none}
@@ -922,6 +954,12 @@ footer .f-data{font-family:var(--font-mono);font-size:11.5px}
   </div>
 </footer>
 
+<!-- ============ FLOATING TOMMY (follows you down the page) ============ -->
+<div id="tommy-float" aria-hidden="true">
+  <div class="t-bubble" id="t-bubble"></div>
+  <img src="tommy-ghost.png" alt="" id="t-ghost">
+</div>
+
 <script>
 /* ============================================================
    CONFIG — replace the placeholders below before going live.
@@ -993,6 +1031,87 @@ form.addEventListener("submit", function (e) {
   form.style.display = "none";
   document.getElementById("form-success").style.display = "block";
 });
+
+/* ---------- floating Tommy: drifts down the page and chats ---------- */
+(function () {
+  var wrap = document.getElementById("tommy-float");
+  var ghost = document.getElementById("t-ghost");
+  var bubble = document.getElementById("t-bubble");
+  var heroMark = document.querySelector(".hero-mark");
+  if (!wrap || !heroMark) return;
+
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // what Tommy says as you pass each section
+  var LINES = {
+    problem:      "62% of calls just ring out. Not on my shift.",
+    candidate:    "That's my file. Read it — I don't mind.",
+    compensation: "168 hours a week. I don't do sick days.",
+    management:   "My manager checks my work every week. Really.",
+    guarantee:    "30 days. If I don't earn the job, you don't pay.",
+    how:          "I could start learning your store this week.",
+    pricing:      "Less than $33 a day. No lunch breaks either.",
+    faq:          "Yes, I'm real AI. Go ahead — call me.",
+    interview:    "Fill that out. I'll text you in 60 seconds. Timed."
+  };
+  var sections = [];
+  Object.keys(LINES).forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) sections.push({ id: id, el: el });
+  });
+
+  var y = 90, vel = 0, lastScroll = window.scrollY;
+  var lastSec = null, bubbleTimer = null, secCheck = 0;
+
+  function currentSection() {
+    var line = window.innerHeight * 0.45, found = null;
+    for (var i = 0; i < sections.length; i++) {
+      var r = sections[i].el.getBoundingClientRect();
+      if (r.top < line && r.bottom > line) { found = sections[i].id; break; }
+    }
+    return found;
+  }
+
+  function say(id) {
+    bubble.textContent = LINES[id];
+    bubble.classList.add("show");
+    clearTimeout(bubbleTimer);
+    bubbleTimer = setTimeout(function () { bubble.classList.remove("show"); }, 4500);
+  }
+
+  function frame(t) {
+    // appear once the hero ghost has scrolled off the top
+    var on = heroMark.getBoundingClientRect().bottom < 0;
+    wrap.classList.toggle("on", on);
+
+    // drift lower down the viewport as you get deeper into the page
+    var doc = document.documentElement;
+    var prog = Math.min(1, window.scrollY / (doc.scrollHeight - window.innerHeight));
+    var targetY = 84 + prog * (window.innerHeight * 0.62);
+
+    // smooth follow + scroll-velocity tilt + idle bob
+    vel += ((window.scrollY - lastScroll) - vel) * 0.12;
+    lastScroll = window.scrollY;
+    y += (targetY - y) * 0.06;
+
+    var bob  = reduced ? 0 : Math.sin(t / 750) * 7;
+    var sway = reduced ? 0 : Math.sin(t / 1300) * 4;
+    var tilt = reduced ? 0 : Math.sin(t / 950) * 7 + Math.max(-18, Math.min(18, vel * 0.4));
+
+    wrap.style.transform = "translate3d(" + sway + "px," + (y + bob) + "px,0)";
+    ghost.style.transform = "rotate(" + tilt + "deg)";
+
+    // section chat (checked ~5x/sec, not every frame)
+    if (t - secCheck > 200) {
+      secCheck = t;
+      var sec = on ? currentSection() : null;
+      if (sec && sec !== lastSec) { lastSec = sec; say(sec); }
+      if (!on) lastSec = null;
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
 
 /* ---------- scroll reveal ---------- */
 if ("IntersectionObserver" in window) {
