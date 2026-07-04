@@ -419,6 +419,89 @@ h3{font-size:1.15rem;font-weight:700;letter-spacing:-.01em}
   font-family:var(--font-mono);font-size:11.5px;color:var(--ink-mute);
 }
 
+/* ---------- live board (animated dashboard) ---------- */
+.board{
+  background:var(--card);border:1px solid var(--line-hi);border-radius:18px;
+  overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.5);
+}
+.board-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line)}
+@media(min-width:900px){.board-grid{grid-template-columns:1.15fr 1.35fr 1fr}}
+.bcell{background:var(--card);padding:20px 20px 22px;min-width:0}
+.b-label{
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+  font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-mute);margin-bottom:16px;
+}
+.b-live{color:var(--accent);display:inline-flex;align-items:center;gap:5px;letter-spacing:.08em}
+.b-live::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 7px var(--accent)}
+/* live thread */
+.b-chat{display:flex;flex-direction:column;gap:7px;min-height:196px}
+.b-chat .msg{font-size:.82rem;padding:7px 11px;max-width:95%;border-radius:13px}
+/* campaign */
+.b-camp-top{display:flex;align-items:baseline;gap:6px;margin-bottom:12px}
+.b-camp-top b{font-size:1.9rem;font-weight:800;letter-spacing:-.03em}
+.b-camp-top span{color:var(--ink-mute);font-size:.85rem}
+.b-camp-top .pct{margin-left:auto;color:var(--accent)}
+.b-bar{height:8px;border-radius:99px;background:var(--bg-2);overflow:hidden;margin-bottom:18px}
+.b-bar i{display:block;height:100%;width:0;border-radius:99px;background:var(--accent);transition:width 1.6s cubic-bezier(.2,.7,.3,1)}
+.board.go .b-bar i{width:86%}
+.b-camp-stats{display:flex;gap:8%}
+.b-camp-stats b{display:block;font-size:1.35rem;font-weight:800;color:var(--accent);letter-spacing:-.02em}
+.b-camp-stats span{font-size:.8rem;color:var(--ink-mute)}
+/* stat pills */
+.b-pills{display:flex;flex-direction:column;gap:9px}
+.b-pill{display:flex;align-items:center;gap:11px;background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:9px 12px}
+.b-pill i{
+  font-style:normal;flex:none;min-width:36px;text-align:center;
+  font-weight:800;font-size:.95rem;color:#fff;border-radius:9px;padding:5px 7px;
+}
+.b-pill span{font-size:.86rem;font-weight:600}
+.chip-blue{background:var(--accent)}
+.chip-red{background:#ff5f57}
+.chip-green{background:#2fbf5f}
+/* volume bars */
+.b-bars{display:flex;align-items:flex-end;gap:7px;height:120px;margin-bottom:8px}
+.b-bars i{
+  flex:1;border-radius:5px 5px 2px 2px;background:var(--accent);opacity:.85;
+  height:6%;transition:height 1s cubic-bezier(.2,.7,.3,1);transition-delay:var(--d,0s);
+}
+.b-bars i:nth-child(odd){opacity:.45}
+.board.go .b-bars i{height:var(--h)}
+.b-bars-x{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;color:var(--ink-mute)}
+/* donut */
+.b-donut{display:flex;align-items:center;gap:18px}
+.b-donut svg{flex:none}
+.b-donut .ring-bg{stroke:var(--bg-2)}
+.b-donut .ring-fg{
+  stroke:var(--accent);stroke-linecap:round;
+  stroke-dasharray:213.6;stroke-dashoffset:213.6;
+  transition:stroke-dashoffset 1.6s cubic-bezier(.2,.7,.3,1) .2s;
+}
+.board.go .ring-fg{stroke-dashoffset:38.4}
+.b-legend{font-size:.86rem;line-height:2}
+.b-legend b{font-weight:800}
+.b-legend .sw{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:8px;vertical-align:0}
+/* escalation ticker */
+.b-esc{height:172px;overflow:hidden;position:relative;
+  -webkit-mask-image:linear-gradient(180deg,#000 70%,transparent);
+  mask-image:linear-gradient(180deg,#000 70%,transparent);
+}
+.esc-track{display:flex;flex-direction:column;gap:9px;animation:escUp 16s linear infinite}
+@keyframes escUp{to{transform:translateY(-50%)}}
+.esc-row{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:9px 12px;flex:none}
+.esc-row .nm{font-size:.86rem;font-weight:700}
+.esc-row .ph{font-family:var(--font-mono);font-size:10px;color:var(--ink-mute);margin-top:1px}
+.esc-tag{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.06em;border-radius:999px;padding:4px 9px;flex:none}
+.tag-amber{color:#ffb454;background:rgba(255,180,84,.12);border:1px solid rgba(255,180,84,.3)}
+.tag-red{color:#ff6a55;background:rgba(255,106,85,.12);border:1px solid rgba(255,106,85,.3)}
+.tag-blue{color:var(--accent-hi);background:rgba(10,132,255,.12);border:1px solid rgba(10,132,255,.3)}
+.tag-green{color:#4ade80;background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.3)}
+@media(prefers-reduced-motion:reduce){
+  .esc-track{animation:none}
+  .b-bar i,.b-bars i,.ring-fg{transition:none}
+  .b-bar i{width:86%}.b-bars i{height:var(--h)}.ring-fg{stroke-dashoffset:38.4}
+}
+
 /* ---------- how hiring works: onboarding stepper ---------- */
 .stepper{list-style:none;max-width:560px}
 .stepper li{display:flex;gap:16px;position:relative;padding-bottom:28px}
@@ -866,20 +949,92 @@ footer .f-data{font-family:var(--font-mono);font-size:11.5px}
       </div>
     </div>
 
-    <!-- performance review mockup -->
-    <div class="panel rv">
+    <!-- live board: everything on it moves -->
+    <div class="board rv" id="live-board">
       <div class="panel-bar">
         <span class="dots"><i></i><i></i><i></i></span>
-        tommy · performance review / june
+        tommy · live board
         <span class="live">on shift</span>
       </div>
-      <div class="panel-body">
-        <div class="pr-row"><span class="lbl">Leads handled</span><span class="val">47</span></div>
-        <div class="pr-row"><span class="lbl">Avg response time</span><span class="val">38s</span></div>
-        <div class="pr-row"><span class="lbl">Appointments set</span><span class="val">9</span></div>
-        <div class="pr-row"><span class="lbl">Booked value</span><span class="val money">$11,400</span></div>
+      <div class="board-grid">
+
+        <div class="bcell">
+          <div class="b-label">Live thread <span class="b-live">AI handling</span></div>
+          <div class="b-chat" id="b-chat">
+            <div class="msg in">I'll wait if it's not too long</div>
+            <div class="msg out">Usually about 45 min. Wednesday 10am or Thursday 3pm?</div>
+            <div class="msg in">Wednesday works perfectly</div>
+            <div class="msg out">All set! Wed 10am brake inspection for your Accord. Reminder the morning of 👍</div>
+          </div>
+        </div>
+
+        <div class="bcell">
+          <div class="b-label">Dead-lead reactivation <span class="b-live">active</span></div>
+          <div class="b-camp-top">
+            <b class="cnt" data-n="530">0</b><span>/621 leads</span>
+            <b class="pct cnt" data-n="86" data-suffix="%">0%</b>
+          </div>
+          <div class="b-bar"><i></i></div>
+          <div class="b-camp-stats">
+            <div><b class="cnt" data-n="41">0</b><span>replied</span></div>
+            <div><b class="cnt" data-n="23">0</b><span>booked</span></div>
+            <div><b class="cnt" data-n="6">0</b><span>sold</span></div>
+          </div>
+        </div>
+
+        <div class="bcell">
+          <div class="b-label">This month</div>
+          <div class="b-pills">
+            <div class="b-pill"><i class="chip-blue cnt" data-n="35">0</i><span>Appointments booked</span></div>
+            <div class="b-pill"><i class="chip-red cnt" data-n="19">0</i><span>Hot leads</span></div>
+            <div class="b-pill"><i class="chip-blue cnt" data-n="48">0</i><span>Callbacks requested</span></div>
+            <div class="b-pill"><i class="chip-green cnt" data-n="77">0</i><span>Texts sent</span></div>
+            <div class="b-pill"><i class="chip-blue cnt" data-n="37">0</i><span>Leads qualified</span></div>
+          </div>
+        </div>
+
+        <div class="bcell">
+          <div class="b-label">Volume by hour</div>
+          <div class="b-bars">
+            <i style="--h:22%;--d:0s"></i><i style="--h:38%;--d:.08s"></i>
+            <i style="--h:56%;--d:.16s"></i><i style="--h:92%;--d:.24s"></i>
+            <i style="--h:74%;--d:.32s"></i><i style="--h:50%;--d:.4s"></i>
+            <i style="--h:62%;--d:.48s"></i><i style="--h:30%;--d:.56s"></i>
+          </div>
+          <div class="b-bars-x"><span>8a</span><span>11a</span><span>2p</span><span>6p</span></div>
+        </div>
+
+        <div class="bcell">
+          <div class="b-label">AI vs. human handled</div>
+          <div class="b-donut">
+            <svg width="92" height="92" viewBox="0 0 92 92">
+              <circle class="ring-bg" cx="46" cy="46" r="34" fill="none" stroke-width="11"/>
+              <circle class="ring-fg" cx="46" cy="46" r="34" fill="none" stroke-width="11" transform="rotate(-90 46 46)"/>
+            </svg>
+            <div class="b-legend">
+              <div><span class="sw" style="background:var(--accent)"></span><b class="cnt" data-n="82" data-suffix="%">0%</b> AI resolved</div>
+              <div><span class="sw" style="background:var(--bg-2);border:1px solid var(--line-hi)"></span><b class="cnt" data-n="18" data-suffix="%">0%</b> Rep takeover</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bcell">
+          <div class="b-label">Escalated to a rep <span class="b-live">live</span></div>
+          <div class="b-esc">
+            <div class="esc-track">
+              <div class="esc-row"><div><div class="nm">Tom Bradley</div><div class="ph">(716) 882-3361</div></div><span class="esc-tag tag-amber">Sales transfer</span></div>
+              <div class="esc-row"><div><div class="nm">Sophie Laurent</div><div class="ph">(647) 555-1180</div></div><span class="esc-tag tag-red">Ready to buy</span></div>
+              <div class="esc-row"><div><div class="nm">Anna Novak</div><div class="ph">(617) 338-1249</div></div><span class="esc-tag tag-blue">Sales follow-up</span></div>
+              <div class="esc-row"><div><div class="nm">James Wilson</div><div class="ph">(832) 491-7705</div></div><span class="esc-tag tag-green">Service warranty</span></div>
+              <div class="esc-row"><div><div class="nm">Tom Bradley</div><div class="ph">(716) 882-3361</div></div><span class="esc-tag tag-amber">Sales transfer</span></div>
+              <div class="esc-row"><div><div class="nm">Sophie Laurent</div><div class="ph">(647) 555-1180</div></div><span class="esc-tag tag-red">Ready to buy</span></div>
+              <div class="esc-row"><div><div class="nm">Anna Novak</div><div class="ph">(617) 338-1249</div></div><span class="esc-tag tag-blue">Sales follow-up</span></div>
+              <div class="esc-row"><div><div class="nm">James Wilson</div><div class="ph">(832) 491-7705</div></div><span class="esc-tag tag-green">Service warranty</span></div>
+            </div>
+          </div>
+        </div>
+
       </div>
-      <div class="panel-foot">delivered the 1st of every month · one page · no meeting</div>
     </div>
   </div>
 </section>
@@ -1211,6 +1366,71 @@ form.addEventListener("submit", function (e) {
         setTimeout(next, 900);
       }
     })();
+  }
+})();
+
+/* ---------- live board: counters, bars, donut, looping thread ---------- */
+(function () {
+  var board = document.getElementById("live-board");
+  if (!board || !("IntersectionObserver" in window)) return;
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function countUp(el, n, suffix) {
+    var t0 = null;
+    function step(t) {
+      if (!t0) t0 = t;
+      var p = Math.min(1, (t - t0) / 1400);
+      p = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(n * p) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  var ran = false;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting || ran) return;
+      ran = true; io.disconnect();
+      board.classList.add("go");
+      board.querySelectorAll(".cnt").forEach(function (el) {
+        var n = parseInt(el.getAttribute("data-n"), 10);
+        var suffix = el.getAttribute("data-suffix") || "";
+        if (reduced) { el.textContent = n + suffix; } else { countUp(el, n, suffix); }
+      });
+      startThread();
+    });
+  }, { threshold: 0.25 });
+  io.observe(board);
+
+  // the live thread types itself out, holds, then replays
+  function startThread() {
+    var chat = document.getElementById("b-chat");
+    var msgs = Array.prototype.slice.call(chat.querySelectorAll(".msg"));
+    if (reduced) return; // leave the full thread visible
+    var typing = document.createElement("div");
+    typing.className = "msg out typing";
+    typing.innerHTML = "<i></i><i></i><i></i>";
+    function cycle() {
+      msgs.forEach(function (m) { m.classList.add("m-hide"); });
+      var i = 0;
+      (function next() {
+        if (i >= msgs.length) { setTimeout(cycle, 4200); return; }
+        var m = msgs[i++];
+        if (m.classList.contains("out")) {
+          chat.insertBefore(typing, m);
+          setTimeout(function () {
+            typing.remove();
+            m.classList.remove("m-hide");
+            setTimeout(next, 900);
+          }, 1000);
+        } else {
+          m.classList.remove("m-hide");
+          setTimeout(next, 900);
+        }
+      })();
+    }
+    cycle();
   }
 })();
 
