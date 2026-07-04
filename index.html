@@ -235,15 +235,31 @@ h3{font-size:1.15rem;font-weight:700;letter-spacing:-.01em}
 .chat-stamp::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent)}
 
 /* ---------- audition test cards ---------- */
-.try-grid{display:grid;gap:12px;max-width:860px;margin:0 auto 30px}
+.try-grid{display:grid;gap:14px;max-width:1000px;margin:0 auto 30px}
 @media(min-width:820px){.try-grid{grid-template-columns:repeat(3,1fr)}}
-.try{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
-.try .t-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
-.try .t-quote{
-  background:var(--card-2);border:1px solid var(--line);border-radius:14px;border-bottom-left-radius:5px;
-  padding:9px 13px;font-size:.92rem;font-weight:600;display:inline-block;margin-bottom:12px;
+.try{
+  background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 22px;
+  display:flex;flex-direction:column;
 }
-.try p{color:var(--ink-dim);font-size:.88rem;line-height:1.5}
+.try .t-num{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.try .t-num i{
+  font-style:normal;font-family:var(--font-mono);font-size:11px;font-weight:700;
+  background:rgba(10,132,255,.15);color:var(--accent);
+  border:1px solid rgba(10,132,255,.35);border-radius:7px;padding:3px 8px;
+}
+.try .t-num span{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.try h3{font-size:1.08rem;margin-bottom:8px;letter-spacing:-.01em}
+.try .t-desc{color:var(--ink-dim);font-size:.9rem;line-height:1.5;margin-bottom:18px}
+.try-chat{display:flex;flex-direction:column;gap:7px;margin-bottom:18px;flex:1}
+.try-chat .msg{font-size:.87rem;padding:8px 12px;max-width:94%;border-radius:15px}
+.try-chat .msg.in{border-bottom-left-radius:5px}
+.try-chat .msg.out{border-bottom-right-radius:5px}
+.t-out{
+  align-self:flex-start;display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--font-mono);font-size:10.5px;color:var(--accent-hi);
+  background:rgba(10,132,255,.1);border:1px solid rgba(10,132,255,.25);
+  border-radius:999px;padding:6px 12px;
+}
 .try-cta{text-align:center}
 
 /* ---------- references ---------- */
@@ -677,19 +693,34 @@ footer .f-data{font-family:var(--font-mono);font-size:11.5px}
 
     <div class="try-grid rv">
       <div class="try">
-        <div class="t-label">Test 1 · ask about stock</div>
-        <div class="t-quote">"do you have any AWD under $30k?"</div>
-        <p>Tommy answers from live inventory. Real cars, real prices — pulled from the lot, never made up.</p>
+        <div class="t-num"><i>01</i><span>Ask about stock</span></div>
+        <h3>Answers instantly, from real inventory.</h3>
+        <p class="t-desc">In seconds it replies with actual cars — pulled live from your lot, never made up.</p>
+        <div class="try-chat">
+          <div class="msg in">do you have any AWD under $30k?</div>
+          <div class="msg out">3 on the lot right now 👇 '22 CX-5 $27,9k · '21 RAV4 $28,4k · '23 Forester $29,8k. Want pics?</div>
+        </div>
+        <div class="t-out">→ Real cars, real prices</div>
       </div>
       <div class="try">
-        <div class="t-label">Test 2 · ask for a car we don't have</div>
-        <div class="t-quote">"got a Tesla Model 3?"</div>
-        <p>Tommy won't pretend — he pivots: "Not on the lot — but there's a '23 Polestar 2 here that's close. Want a look? Either way, I'll text you the second a Model 3 lands or if we can source you one."</p>
+        <div class="t-num"><i>02</i><span>It never lies</span></div>
+        <h3>Ask for a car we don't have.</h3>
+        <p class="t-desc">Tommy tells the truth, pivots to something close, and keeps the lead alive.</p>
+        <div class="try-chat">
+          <div class="msg in">got a Tesla Model 3?</div>
+          <div class="msg out">Not on the lot — but there's a '23 Polestar 2 here that's close. Want a look? I'll also text you the second a Model 3 lands or if we can source you one.</div>
+        </div>
+        <div class="t-out">→ Honest answer · pivot · stock alert set</div>
       </div>
       <div class="try">
-        <div class="t-label">Test 3 · ask for a human</div>
-        <div class="t-quote">"can I talk to a salesperson?"</div>
-        <p>Tommy flags the thread, alerts the team, and steps back. No lead left waiting on a bot.</p>
+        <div class="t-num"><i>03</i><span>Ask for a human</span></div>
+        <h3>No lead left waiting on a bot.</h3>
+        <p class="t-desc">Tommy flags the thread, alerts your team, and steps back the moment it matters.</p>
+        <div class="try-chat">
+          <div class="msg in">can I talk to a salesperson?</div>
+          <div class="msg out">Of course — connecting you with our team now. One sec 🙌</div>
+        </div>
+        <div class="t-out">→ Flagged · team alerted · Tommy steps back</div>
       </div>
     </div>
 
