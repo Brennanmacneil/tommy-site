@@ -448,6 +448,35 @@ a.phone{
   .b-bar i{width:86%}.b-bars i{height:var(--h)}.ring-fg{stroke-dashoffset:38.4}
 }
 
+/* ---------- integrations ---------- */
+.integ-visual{
+  position:relative;height:300px;max-width:540px;margin:0 auto 44px;
+  background:radial-gradient(ellipse 60% 55% at 50% 50%, rgba(10,132,255,.08), transparent 70%), var(--card);
+  border:1px solid var(--line);border-radius:26px;overflow:hidden;
+}
+.integ-core{
+  position:absolute;left:50%;top:50%;width:96px;height:96px;margin:-48px 0 0 -48px;
+  border-radius:24px;filter:drop-shadow(0 14px 40px rgba(10,132,255,.35));
+}
+.i-chip{
+  position:absolute;width:54px;height:54px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-sans);font-weight:800;color:#fff;
+  box-shadow:0 12px 30px rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.08);
+  animation:chipFloat 5.5s ease-in-out infinite;animation-delay:var(--fd,0s);
+}
+.i-chip small{font-size:9px;font-weight:800;letter-spacing:.02em}
+@keyframes chipFloat{
+  0%,100%{transform:translateY(0) rotate(var(--rot,0deg))}
+  50%{transform:translateY(-11px) rotate(var(--rot,0deg))}
+}
+@media(prefers-reduced-motion:reduce){.i-chip{animation:none}}
+@media(max-width:640px){
+  .integ-visual{height:250px}
+  .i-chip{width:46px;height:46px}
+  .integ-core{width:80px;height:80px;margin:-40px 0 0 -40px}
+}
+
 /* ---------- pricing ---------- */
 .price-grid{display:grid;gap:16px;margin-bottom:30px}
 @media(min-width:820px){.price-grid{grid-template-columns:1fr 1fr}}
@@ -917,6 +946,24 @@ footer .f-data{font-family:var(--font-mono);font-size:11.5px}
   </div>
 </section>
 
+<!-- ============ INTEGRATIONS ============ -->
+<section id="integrations">
+  <div class="wrap" style="max-width:720px;text-align:center">
+    <div class="integ-visual rv" aria-hidden="true">
+      <img class="integ-core" src="tommy-logo.png" alt="">
+      <span class="i-chip" style="left:12%;top:14%;--fd:0s;--rot:-7deg;background:#111">CDK</span>
+      <span class="i-chip" style="left:76%;top:11%;--fd:-1.2s;--rot:6deg;background:#12284c;font-family:Georgia,serif;font-size:1.5rem">R</span>
+      <span class="i-chip" style="left:5%;top:58%;--fd:-2.1s;--rot:5deg;background:#2bb3a3"><small>tekion</small></span>
+      <span class="i-chip" style="left:83%;top:55%;--fd:-3s;--rot:-5deg;background:#c8102e">V</span>
+      <span class="i-chip" style="left:27%;top:74%;--fd:-3.8s;--rot:8deg;background:#0074bc">DS</span>
+      <span class="i-chip" style="left:60%;top:77%;--fd:-4.6s;--rot:-8deg;background:#12284c;font-weight:700;text-transform:lowercase">dt</span>
+    </div>
+    <div class="eyebrow rv" style="justify-content:center">Integrations</div>
+    <h2 class="rv">You're not switching systems. You're making yours&nbsp;better.</h2>
+    <p class="sub rv" style="margin:0 auto">Tommy plugs into the tools you already run — CDK, Reynolds, Tekion, VinSolutions, Dealertrack — and writes every appointment and note back into your DMS the second the conversation&nbsp;ends.</p>
+  </div>
+</section>
+
 <!-- ============ PRICING ============ -->
 <section id="pricing" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="wrap">
@@ -1273,6 +1320,7 @@ form.addEventListener("submit", function (e) {
     watch:        "That's me working. Go on — text the line yourself.",
     candidate:    "That's my file. Read it — I don't mind.",
     management:   "My manager checks my work every week. Really.",
+    integrations: "Your tools. I just answer faster than they do.",
     pricing:      "Less than $33 a day. No lunch breaks either.",
     faq:          "Yes, I'm real AI. Go ahead — call me.",
     interview:    "Fill that out. I'll text you in 60 seconds. Timed."
